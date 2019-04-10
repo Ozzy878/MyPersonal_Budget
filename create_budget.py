@@ -1,5 +1,5 @@
 # Imports
-from models.budget import Account, Budget
+from payday_budget.models.budget import Account, Budget
 from sqlite3 import connect, OperationalError
 
 # Check for existing budget

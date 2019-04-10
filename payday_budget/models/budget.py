@@ -3,8 +3,10 @@ from datetime import datetime
 from sqlite3 import connect
 from pandas import DataFrame, read_sql
 from payday_budget.utils.user import ensure_positive_integer_from_user, expect_yes_or_no_answer
+
+
 # Define classes
-class Account():
+class Account:
     """An account within a personal budget
 
     Attributes:
@@ -95,7 +97,8 @@ class Budget():
     def display_accounts(self):
         return ", ".join(self.accounts.keys())
 
-    def display_history(self, by_account="", transactions=10):
+    @staticmethod
+    def display_history(by_account="", transactions=10):
         """Display the last n transactions from the transaction_history table"""
         conn = connect('data/budget.db')
         # Add SQL logic for filtering by account only if requested
@@ -108,7 +111,7 @@ class Budget():
 
         display_sql = f'''
         SELECT
-        date as Date
+        DATE as Date
         , name as Account
         , transaction_type as Type
         , comment as Comment

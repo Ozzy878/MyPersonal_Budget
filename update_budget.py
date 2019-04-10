@@ -1,5 +1,5 @@
 # Imports
-from models.budget import Account, Budget
+from payday_budget.models.budget import Account, Budget
 from sqlite3 import connect
 from pandas import DataFrame, read_sql
 

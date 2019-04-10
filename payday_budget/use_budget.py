@@ -5,6 +5,7 @@ from sqlite3 import connect, OperationalError
 from pandas import DataFrame, read_sql
 from os import path, makedirs
 
+
 def create_budget():
     """Load an interactive session for user to create/overwrite a budget"""
     # Check for existing budget
@@ -26,7 +27,7 @@ def create_budget():
         while overwrite_existing not in ['yes', 'no']:
             overwrite_existing = input(
                 'Would you like to overwrite the existing budget? Type yes or no: '
-            ).lower() 
+            ).lower()
         if overwrite_existing == 'no':
             conn.close()
             raise SystemExit
@@ -71,8 +72,8 @@ def create_budget():
                 continue
             else:
                 break
-        budget.add_account(name = name, category = category, budgeted_amount = budgeted_amount,
-        current_balance = budgeted_amount)
+        budget.add_account(name=name, category=category, budgeted_amount=budgeted_amount,
+                           current_balance=budgeted_amount)
         # Ask for another
         add_another = ''
         while add_another not in ['yes', 'no']:
@@ -81,7 +82,8 @@ def create_budget():
             continue
         else:
             break
-    
+
+
 def update_budget():
     """Load an interactive session for user to update budget"""
     # Load data from SQLite budget_summary table
@@ -127,4 +129,3 @@ def update_budget():
             chosen_func()
         else:
             continue
-  
